@@ -1,1 +1,9 @@
-# Epi_FlipBoard_2020
+# Server
+
+## Set-up
+
+npm install
+
+## launch
+
+node server.js
