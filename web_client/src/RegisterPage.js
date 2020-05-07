@@ -4,10 +4,28 @@ import './RegisterPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, ButtonGroup} from 'react-bootstrap';
 
+function getRandomInt(max) {
+  return (Math.floor(Math.random() * Math.floor(max)) + 1);
+}
+
+function randImg() {
+  var nb = getRandomInt(3);
+  var img = '';
+
+  if (nb == 1)
+    img = require('./antar.jpg');
+  if (nb == 2)
+    img = require('./earth.jpg');
+  if (nb == 3)
+    img = require('./NY.webp');
+  return img;
+}
 
 function RegisterPage() {
 
   const [test, setTest] = useState(600);
+  const [img, setImg] = useState(randImg());
+
   const style = {
     margin: 15,
   };
@@ -16,9 +34,10 @@ function RegisterPage() {
     console.log('hello: ', test)
   }
 
+
   return (
     <div className="RegisterPage">
-      <header className="RegisterPage-back">
+      <header className="RegisterPage-back" style={{backgroundImage: `url(${img})`,}}>
         <header className="RegisterPage-form">
           <Form>
             <Form.Label size='lg' style={{marginBottom: '5vh'}} > Register </Form.Label>
