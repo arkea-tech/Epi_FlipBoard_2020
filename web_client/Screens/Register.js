@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import {ImageBackground, Image, Button, View, StyleSheet, SafeAreaView, TextInput, Text, StatusBar} from 'react-native';
+import {ImageBackground, Image, Button, View, Alert, StyleSheet, SafeAreaView, TextInput, Text, StatusBar} from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 function RandPic() {
@@ -19,21 +19,39 @@ function RandPic() {
     return img;
 }
 
-export function LoginScreen({navigation}) {
+function LogUser(email, password) {
+  console.log("hello man")
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({"email": email, "password": password});
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  fetch("http:localhost:3000/api/auth/login", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+export function RegisterScreen({navigation}) {
 
     const [value, onChangeText] = React.useState('');
     const [valuePass, onChangePass] = React.useState('');
+    const [valueConfPass, onChangeConfPass] = React.useState('');
     const [Img, onChangeImg] = React.useState(RandPic());
     const [Alert, onChangeAlert] = React.useState(false);
     const [ErrorMess, onChangeErrorMess] = React.useState('Error');
 
-    function LogUser(email, password) {
-      console.log("hello man")
+    function RegUser(email, password, conf) {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-
       var raw = JSON.stringify({"email": email, "password": password});
-
       var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -41,17 +59,20 @@ export function LoginScreen({navigation}) {
         redirect: 'follow'
       };
 
-      fetch("http:localhost:3000/api/auth/login", requestOptions)
+      fetch("http:localhost:3000/api/auth/signup", requestOptions)
         .then(response => response.text())
         .then(result => {
           var test = JSON.parse(result)
-          console.log(result)
           if (test.error) {
             onChangeAlert(true);
-            onChangeErrorMess(test.error)
+            onChangeErrorMess(test.error.message)
           }
+          if (test.message == 'User added successfully !')
+            LogUser(email, password)
         })
-        .catch(error => console.log('error', error));
+        .catch(error => {
+          console.log('error', error)
+        });
     }
 
     return (
@@ -87,19 +108,28 @@ export function LoginScreen({navigation}) {
                 secureTextEntry={true}
               />
             </View>
+            <View style={styles.textInput}>
+              <TextInput
+                underlineColorAndroid={'purple'}
+                style={{ height: 50, width: '70%', fontSize: 20, borderColor: 'gray', borderBottomWidth: 1 }}
+                onChangeText={text => onChangeConfPass(text)}
+                value={valueConfPass}
+                textAlign={'center'}
+                placeholder={'Confirm Password'}
+                autoCompleteType={'password'}
+                secureTextEntry={true}
+              />
+            </View>
             <View style={{flex: 0.1, flexDirection: 'column'}}>
               <Button
                 title="Confirm"
                 color="#515A5A"
-                onPress={() => LogUser(value, valuePass)}
+                onPress={() => RegUser(value, valuePass, valueConfPass)}
               />
             </View>
             <View style={{flex: 0.4, flexDirection: 'column'}}>
-              <Text style={styles.textLink} onPress={()=> props.navigation.navigate('Home')}>
-                Forgot Password ?
-              </Text>
-              <Text style={styles.textLink} onPress={() => navigation.navigate('Register')}>
-                Dont have an account ?
+              <Text style={styles.textLink} onPress={() => navigation.navigate('Login')}>
+                Already have an account ?
               </Text>
             </View>
           </View>
@@ -129,24 +159,24 @@ export function LoginScreen({navigation}) {
                 style={styles.buttoncontainer}
             />
           </View>
-
+          
           <AwesomeAlert
-            show={Alert}
-            showProgress={false}
-            title="Login Error"
-            message={ErrorMess}
-            closeOnTouchOutside={true}
-            closeOnHardwareBackPress={false}
-            showConfirmButton={true}
-            confirmText="Ok"
-            confirmButtonColor="#DD6B55"
-            onCancelPressed={() => {
-              onChangeAlert(false)
-            }}
-            onConfirmPressed={() => {
-              onChangeAlert(false)
-            }}
-          />
+              show={Alert}
+              showProgress={false}
+              title="Register Error"
+              message={ErrorMess}
+              closeOnTouchOutside={true}
+              closeOnHardwareBackPress={false}
+              showConfirmButton={true}
+              confirmText="Ok"
+              confirmButtonColor="#DD6B55"
+              onCancelPressed={() => {
+                onChangeAlert(false)
+              }}
+              onConfirmPressed={() => {
+                onChangeAlert(false)
+              }}
+            />
       </View>
     )
   }
