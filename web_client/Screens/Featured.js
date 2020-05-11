@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
-import {Button, View, StyleSheet,Text,ScrollView} from 'react-native';
+import {Button, View, StyleSheet,Text,ScrollView,FlatList} from 'react-native';
 import jsonTest from './test'
 
 class CustomTextInput extends Component {
@@ -48,6 +48,7 @@ function ThreeByThree(list) {
   if (j != 0)
     newList.push(tmpList)
   console.log('newList: ', newList)
+  return newList;
 }
 
 export function FeaturedScreen({navigation}) {
@@ -63,10 +64,13 @@ export function FeaturedScreen({navigation}) {
     for (var i = 0; i < newDecklist.length; i++) {
       console.log(i, ' : ', newDecklist[i])
     }
-    ThreeByThree(newDecklist);
+    var newList = ThreeByThree(newDecklist);
     return (
       <ScrollView style={styles.back}>
-        <CustomTextInput test={newDecklist}/>
+        <FlatList
+          data={newList}
+          renderItem={({item}) => <CustomTextInput test={item}/>}
+        />
         <View style={styles.cont}>
         </View>
         <View style={styles.container}>

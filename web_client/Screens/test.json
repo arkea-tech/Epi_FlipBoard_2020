@@ -86,6 +86,17 @@
 			"Source": "source2",
 			"Autor": "autor2",
 			"Date": "01/02/2020"
+		},
+    {
+      "ID": "09",
+      "Tags": ["Tech", "France"],
+			"Title": "titre 3",
+			"Link": "link3",
+			"Image": "Image3",
+			"Desc": "This article is about stuff",
+			"Source": "source3",
+			"Autor": "autor3",
+			"Date": "01/02/2020"
 		}
 	]
 }
