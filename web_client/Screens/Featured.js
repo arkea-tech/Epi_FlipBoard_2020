@@ -46,7 +46,7 @@ export function FeaturedScreen({navigation}) {
       <ScrollView style={styles.back}>
         <FlatList
           data={newList}
-          renderItem={({item}) => <ArticleBox test={item}/>}
+          renderItem={({item}) => <ArticleBox test={item} nav={navigation}/>}
         />
         <View style={styles.cont}>
         </View>

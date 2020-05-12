@@ -70,9 +70,8 @@ export function LoginScreen({navigation}) {
                 style={{ height: 50, width: '70%', fontSize: 20, borderColor: 'gray', borderBottomWidth: 1 }}
                 onChangeText={text => onChangeText(text)}
                 value={value}
-                textAlign={'center'}
                 placeholder={'    Username'}
-                autoCompleteType={'username'}
+                autocompletetype={'username'}
               />
             </View>
             <View style={styles.textInput}>
@@ -81,9 +80,8 @@ export function LoginScreen({navigation}) {
                 style={{ height: 50, width: '70%', fontSize: 20, borderColor: 'gray', borderBottomWidth: 1 }}
                 onChangeText={text => onChangePass(text)}
                 value={valuePass}
-                textAlign={'center'}
                 placeholder={'     Password'}
-                autoCompleteType={'password'}
+                autocompletetype={'password'}
                 secureTextEntry={true}
               />
             </View>
@@ -201,7 +199,6 @@ export function LoginScreen({navigation}) {
         flex: 0.2,
         justifyContent: 'center',
         flexDirection: 'row',
-        textAlign: 'center',
     },
     textLink: {
         color: '#671478',
