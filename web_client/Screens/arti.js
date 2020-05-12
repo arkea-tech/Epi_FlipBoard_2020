@@ -15,34 +15,45 @@ function dispWeb() {
 
 export default class Arti extends Component {
   render() {
-    return (
+    if (this.props.test.Title === "" || !this.props.test.Title) {
+      return (
         <View style={styles.arti}>
-          <View style={styles.img}>
-            <Image style={{width: '100%', height: '100%', resizeMode: 'stretch', position: 'absolute'}}
-              source={require('../ressources/epiflipboard.png')} />
-          </View>
-          <View style={styles.tags}>
-            <Text style={{textAlign: 'left', fontSize: 15}}>
-              #{this.props.test.Tags}
-            </Text>
-          </View>
-          <View style={styles.title}>
-            <Text style={{textAlign: 'left', fontSize: 25}} onPress={() => this.props.nav.navigate('WebV')}>
-              {this.props.test.Title}
-            </Text>
-          </View>
-          <View style={styles.source}>
-            <Text style={{textAlign: 'left', fontSize: 15}}>
-              {this.props.test.Source} - {this.props.test.Autor}
-            </Text>
-            <View style={styles.title}>
-              <Text style={{textAlign: 'left', fontSize: 25}}>
-                {this.props.test.Date}
+          <Text style={{textAlign: 'left', fontSize: 25}}>
+
+          </Text>
+        </View>
+      )
+    }
+    else {
+      return (
+          <View style={styles.arti}>
+            <View style={styles.img}>
+              <Image style={{width: '100%', height: '100%', resizeMode: 'stretch', position: 'absolute'}}
+                source={require('../ressources/epiflipboard.png')} />
+            </View>
+            <View style={styles.tags}>
+              <Text style={{textAlign: 'left', fontSize: 15}}>
+                #{this.props.test.Tags}
               </Text>
             </View>
+            <View style={styles.title}>
+              <Text style={{textAlign: 'left', fontSize: 25}} onPress={() => this.props.nav.navigate('WebV')}>
+                {this.props.test.Title}
+              </Text>
+            </View>
+            <View style={styles.source}>
+              <Text style={{textAlign: 'left', fontSize: 15}}>
+                {this.props.test.Source} - {this.props.test.Autor}
+              </Text>
+              <View style={styles.title}>
+                <Text style={{textAlign: 'left', fontSize: 25}}>
+                  {this.props.test.Date}
+                </Text>
+              </View>
+            </View>
           </View>
-        </View>
-    )
+      )
+    }
   }
 }
 
