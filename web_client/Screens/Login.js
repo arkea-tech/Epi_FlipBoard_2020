@@ -15,7 +15,6 @@ function RandPic() {
       img = require('../ressources/street2.jpeg');
     if (nb == 3)
       img = require('../ressources/plum2.jpg');
-    console.log(nb)
     return img;
 }
 
@@ -35,7 +34,6 @@ export function LoginScreen({navigation}) {
     const [ErrorMess, onChangeErrorMess] = React.useState('Error');
 
     function LogUser(email, password) {
-      console.log("hello man")
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
@@ -52,9 +50,11 @@ export function LoginScreen({navigation}) {
         .then(response => response.text())
         .then(result => {
           var test = JSON.parse(result)
-          console.log(test)
           CheckResult(result, navigation)
           if (test.error) {
+            if (!test.error.length) {
+              test.error = 'user not existing';
+            }
             onChangeAlert(true);
             onChangeErrorMess(test.error)
           }
