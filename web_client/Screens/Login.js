@@ -19,6 +19,13 @@ function RandPic() {
     return img;
 }
 
+function CheckResult(res, navigation) {
+  res = JSON.parse(res)
+  if (!res.userId || !res.token)
+    return;
+  navigation.navigate('Featured', {userId: res.userId, token: res.token});
+}
+
 export function LoginScreen({navigation}) {
 
     const [value, onChangeText] = React.useState('');
@@ -45,7 +52,8 @@ export function LoginScreen({navigation}) {
         .then(response => response.text())
         .then(result => {
           var test = JSON.parse(result)
-          console.log(result)
+          console.log(test)
+          CheckResult(result, navigation)
           if (test.error) {
             onChangeAlert(true);
             onChangeErrorMess(test.error)
@@ -101,33 +109,6 @@ export function LoginScreen({navigation}) {
               </Text>
             </View>
           </View>
-          <View style={styles.container}>
-            <Button mode="contained" onPress={() => navigation.navigate('Spotlight')}
-                title= "Explore Spotlight"
-                style={styles.buttoncontainer}
-            />
-            <Button mode="contained" onPress={() => navigation.navigate('Featured')}
-                title= "Featured"
-                style={styles.buttoncontainer}
-            />
-            <Button mode="contained" onPress={() => navigation.push('News')}
-                title= "News"
-                style={styles.buttoncontainer}
-            />
-            <Button mode="contained" onPress={() => navigation.navigate('Business')}
-                title= "Business"
-                style={styles.buttoncontainer}
-            />
-            <Button mode="contained" onPress={() => navigation.navigate('Tech')}
-                title= "Tech and science"
-                style={styles.buttoncontainer}
-            />
-            <Button mode="contained" onPress={() => navigation.navigate('Sport')}
-                title= "Sport"
-                style={styles.buttoncontainer}
-            />
-          </View>
-
           <AwesomeAlert
             show={Alert}
             showProgress={false}

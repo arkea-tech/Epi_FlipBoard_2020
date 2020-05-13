@@ -13,6 +13,14 @@ function dispWeb() {
   return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
 }
 
+function disTags(tags) {
+  return (
+    tags.map((item, key)=>(
+         <Text key={key}> #{ item } </Text>)
+         )
+  )
+}
+
 export default class Arti extends Component {
   render() {
     if (this.props.test.Title === "" || !this.props.test.Title) {
@@ -33,7 +41,7 @@ export default class Arti extends Component {
             </View>
             <View style={styles.tags}>
               <Text style={{textAlign: 'left', fontSize: 15}}>
-                #{this.props.test.Tags}
+                {disTags(this.props.test.Tags)}
               </Text>
             </View>
             <View style={styles.title}>

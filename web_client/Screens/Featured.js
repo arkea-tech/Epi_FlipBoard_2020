@@ -11,10 +11,8 @@ function ThreeByThree(list) {
   let newList = [];
   let tmpList = []
 
-  //console.log(newList[0][0])
   for (var i = 0; i < list.length; i++) {
     tmpList.push(list[i])
-    //newList[x][j] = list[i];
     j++;
     if (j == 3) {
       newList.push(tmpList)
@@ -28,14 +26,16 @@ function ThreeByThree(list) {
   return newList;
 }
 
-export function FeaturedScreen({navigation}) {
+export function FeaturedScreen({route, navigation}) {
 
     const [valueTest, onChangeTest] = React.useState('');
+    const [UserId, onChangeUserID] = React.useState('');
 
-    var test = '{"Tags": ["Tech", "France"], "Title": "titre 1","Link": "link1","Image": "Image1","Desc": "This article is about stuff","Source": "source1","Autor": "autor1","Date": "01/02/2020"}';
-    var json = JSON.parse(test);
+    const test = route.params.userId;
+    //const test = navigation.getParam('userName', 'NO-User');
+    console.log('userId: ', test)
+
     var test2 = jsonTest.articles;
-
     console.log("wallah: ", test2)
     let newDecklist = Object.keys(test2).map((val) => { return { ...test2[val], ID: val }; });
     for (var i = 0; i < newDecklist.length; i++) {
