@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import {Button,Image, View, StyleSheet,Text,ScrollView,FlatList} from 'react-native';
 import jsonTest from './test'
 import ArticleBox from './articleBox'
+import NavBar from './navBar'
 
 function ThreeByThree(list) {
   let j = 0;
@@ -44,37 +45,14 @@ export function FeaturedScreen({route, navigation}) {
     var newList = ThreeByThree(newDecklist);
     return (
       <ScrollView style={styles.back}>
+        <View style={styles.container}>
+          <NavBar nav={navigation}/>
+        </View>
         <FlatList
           data={newList}
           renderItem={({item}) => <ArticleBox test={item} nav={navigation}/>}
         />
         <View style={styles.cont}>
-        </View>
-        <View style={styles.container}>
-          <Button mode="contained" onPress={() => navigation.navigate('Spotlight')}
-              title= "Explore Spotlight"
-              style={styles.buttoncontainer}
-          />
-          <Button mode="contained" onPress={() => navigation.push('Featured')}
-              title= "Featured"
-              style={styles.buttoncontainer}
-          />
-          <Button mode="contained" onPress={() => navigation.navigate('News')}
-              title= "News"
-              style={styles.buttoncontainer}
-          />
-          <Button mode="contained" onPress={() => navigation.navigate('Business')}
-              title= "Business"
-              style={styles.buttoncontainer}
-          />
-          <Button mode="contained" onPress={() => navigation.navigate('Tech')}
-              title= "Tech and science"
-              style={styles.buttoncontainer}
-          />
-          <Button mode="contained" onPress={() => navigation.navigate('Sport')}
-              title= "Sport"
-              style={styles.buttoncontainer}
-          />
         </View>
       </ScrollView>
     )
@@ -86,14 +64,7 @@ export function FeaturedScreen({route, navigation}) {
       flexDirection: 'row',
       alignItems: 'flex-end',
       justifyContent: 'space-evenly',
-    },
-    buttonContainer: {
-      width: 100,
-      height: 100,
-    },
-    centered: {
-        alignItems: 'center',
-        justifyContent: 'center',
+      minWidth: '100vw'
     },
     back: {
         backgroundColor: 'pink',

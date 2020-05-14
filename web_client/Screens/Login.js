@@ -131,16 +131,6 @@ export function LoginScreen({navigation}) {
   }
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 0.1,
-      flexDirection: 'row',
-      alignItems: 'flex-end',
-      justifyContent: 'space-evenly',
-    },
-    buttonContainer: {
-      width: 100,
-      height: 100,
-    },
     centered: {
         alignItems: 'center',
         justifyContent: 'center',
