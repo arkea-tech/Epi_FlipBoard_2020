@@ -5,6 +5,8 @@ const path = require('path');
 
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
+const articlesRoutes = require('./routes/articles');
+
 const app = express();
 
 mongoose.connect('mongodb+srv://titi8291:amazeio9@cluster0-npk8d.mongodb.net/test?retryWrites=true&w=majority', {
@@ -30,5 +32,7 @@ app
 
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
+
+app.use('/api/articles', articlesRoutes);
 
 module.exports = app;

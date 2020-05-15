@@ -1,16 +1,9 @@
 const express = require('express');
-const stuffCtrl = require('../controllers/stuff');
 const auth = require('../middleware/auth');
 const request = require('request');
 
 const router = express.Router();
 const aipKey = 'bd1876640c824a3ca28a2d6d16b93cd7'
-
-router.get('/', auth, stuffCtrl.getAllStuff);
-router.post('/', auth, stuffCtrl.createThing);
-router.get('/:id', auth, stuffCtrl.getOneThing);
-router.put('/:id', auth, stuffCtrl.modifyThing);
-router.delete('/:id', auth, stuffCtrl.deleteThing);
 
 router.post('/magazine', (req, res) => {
     const options = {
