@@ -5,6 +5,7 @@ exports.getArticles = (req, res, next) => {
     let articles = [];
     let id = 0;
 
+    console.log(req.params.tag);
     axios.all([
         axios.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=news_desk:("Science")&sort=newest&api-key=SwuUJu3Hgbrr1qZDHCZzR4trZod9998z'),
         axios.get('https://content.guardianapis.com/search?api-key=0dbaf7e0-8c75-4864-82ed-34fc14798075&show-fields=thumbnail,headline,trailText,publication,byline,lastModified&section=science')

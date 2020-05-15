@@ -5,7 +5,7 @@ const path = require('path');
 
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
-const scienceRoutes = require('./routes/science');
+const articlesRoutes = require('./routes/articles');
 
 const app = express();
 
@@ -33,6 +33,6 @@ app
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
 
-app.use('/api/science', scienceRoutes);
+app.use('/api/articles', articlesRoutes);
 
 module.exports = app;

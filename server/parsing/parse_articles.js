@@ -43,6 +43,11 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
     }
 }
 
+function jsUcFirst(string)
+{
+    
+}
+
 module.exports = {
     parseGuardianDatas: parseGuardianDatas,
     parseNytDatas: parseNytDatas
