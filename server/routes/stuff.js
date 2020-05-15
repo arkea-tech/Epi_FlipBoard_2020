@@ -5,7 +5,7 @@ const request = require('request');
 const router = express.Router();
 const aipKey = 'bd1876640c824a3ca28a2d6d16b93cd7'
 
-router.post('/magazine', (req, res) => {
+router.post('/magazine', auth, (req, res) => {
     const options = {
         url: 'https://newsapi.org/v2/sources?apiKey=bd1876640c824a3ca28a2d6d16b93cd7' ,
         method: 'GET'
