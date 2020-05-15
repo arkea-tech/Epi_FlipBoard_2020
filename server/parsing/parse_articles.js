@@ -1,4 +1,4 @@
-function parseNytDatas(articles, new_york_times, id)
+function parseNytDatas(articles, new_york_times, id, tag)
 {
     const docs = new_york_times.data.response.docs;
     var articleDate;
@@ -7,7 +7,7 @@ function parseNytDatas(articles, new_york_times, id)
         docDate = new Date(doc.pub_date);
         articles.push({
             Id: id,
-            Tags: doc.new_desk,
+            Tags: tag,
             Desc: doc.abstract,
             Title: doc.headline.main,
             Source: doc.source,
@@ -21,7 +21,7 @@ function parseNytDatas(articles, new_york_times, id)
     return id;
 }
 
-function parseGuardianDatas(articles, the_guardian, id)
+function parseGuardianDatas(articles, the_guardian, id, tag)
 {
     const docs = the_guardian.data.response.results;
     var articleDate;
@@ -30,7 +30,7 @@ function parseGuardianDatas(articles, the_guardian, id)
         docDate = new Date(doc.fields.lastModified);
         articles.push({
             Id: id,
-            Tags: doc.sectionName,
+            Tags: tag,
             Desc: doc.fields.trailText,
             Title: doc.fields.headline,
             Source: doc.fields.publication,

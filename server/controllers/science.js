@@ -10,8 +10,8 @@ exports.getArticles = (req, res, next) => {
         axios.get('https://content.guardianapis.com/search?api-key=0dbaf7e0-8c75-4864-82ed-34fc14798075&show-fields=thumbnail,headline,trailText,publication,byline,lastModified&section=science')
     ]).then(
         axios.spread((new_york_times, the_guardian) => {
-            id = parseArticles.parseNytDatas(articles, new_york_times, id);
-            parseArticles.parseGuardianDatas(articles, the_guardian, id);
+            id = parseArticles.parseNytDatas(articles, new_york_times, id, "Science");
+            parseArticles.parseGuardianDatas(articles, the_guardian, id, "Science");
             res.status(200).json(articles);
         })
     ).catch(
