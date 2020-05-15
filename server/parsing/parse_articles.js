@@ -45,10 +45,11 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
 
 function jsUcFirst(string)
 {
-    
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 module.exports = {
     parseGuardianDatas: parseGuardianDatas,
-    parseNytDatas: parseNytDatas
+    parseNytDatas: parseNytDatas,
+    jsUcFirst: jsUcFirst
 }
