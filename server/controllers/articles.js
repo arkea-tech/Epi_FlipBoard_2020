@@ -9,7 +9,6 @@ exports.getArticles = (req, res, next) => {
         new_york_times: parseArticles.jsUcFirst(req.params.section)
     };
 
-    console.log(section.guardian, section.new_york_times);
     section.new_york_times = req.params.section == "sport" ? "Sports" : section.new_york_times;
     axios.all([
         axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=news_desk:(${section.new_york_times})&sort=newest&api-key=SwuUJu3Hgbrr1qZDHCZzR4trZod9998z`),
