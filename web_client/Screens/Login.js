@@ -23,6 +23,7 @@ function CheckResult(res, navigation) {
   if (!res.userId || !res.token)
     return;
   navigation.navigate('Featured', {userId: res.userId, token: res.token});
+  //navigation.navigate('Favorites');
 }
 
 export function LoginScreen({navigation}) {

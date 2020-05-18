@@ -11,6 +11,7 @@ import { SportScreen } from './Screens/Sport';
 import { SpotlightScreen } from './Screens/Spotlight';
 import { TechScreen } from './Screens/Tech';
 import { WebV } from './Screens/webV';
+import { FavoritesScreen } from './Screens/favorites';
 
 const Stack = createStackNavigator()
 
@@ -26,6 +27,7 @@ const App = () => {
         <Stack.Screen name="Business" component={BusinessScreen} />
         <Stack.Screen name="Tech" component={TechScreen} />
         <Stack.Screen name="Sport" component={SportScreen} />
+        <Stack.Screen name="Favorites" component={FavoritesScreen} />
         <Stack.Screen name="WebV" component={WebV} />
       </Stack.Navigator>
     </NavigationContainer>

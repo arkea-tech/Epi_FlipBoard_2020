@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     minHeight: '40vh',
     marginLeft: '5%',
     borderColor: 'gray',
-    borderBottomWidth: 1 
+    borderBottomWidth: 1
   },
   img: {
     flex: 1,
