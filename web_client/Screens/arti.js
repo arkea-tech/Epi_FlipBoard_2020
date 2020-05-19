@@ -10,17 +10,6 @@ function disTags(tags) {
   )
 }
 
-function myDate(date) {
-    const date2 = Date.parse(date);
-    var a = new Date(date2 * 1000);
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var year = a.getYear() - 48431;
-      var month = months[a.getMonth()];
-      var date = a.getDate();
-      var time = date + ' ' + month + ' ' + year;
-      return time;
-}
-
 export default class Arti extends Component {
   render() {
     if (this.props.test.Title === "" || !this.props.test.Title) {
@@ -51,11 +40,11 @@ export default class Arti extends Component {
             </View>
             <View style={styles.source}>
               <Text style={{textAlign: 'left', fontSize: 15}}>
-                {this.props.test.Source} - {this.props.test.Author}
+                {this.props.test.Source} {this.props.test.Author ? ('- ' + this.props.test.Author) : ''}
               </Text>
               <View style={styles.title}>
                 <Text style={{textAlign: 'left', fontSize: 25}}>
-                  {myDate(this.props.test.Date.toString())}
+                  {this.props.test.Date.slice(0, 10)}
                 </Text>
               </View>
             </View>
