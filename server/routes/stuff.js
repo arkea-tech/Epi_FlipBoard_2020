@@ -77,6 +77,7 @@ router.post('/news-ct', (req, res) => {
         for (var i = 0; i < len; i++) {
             arr.push({
                 id: i + 1,
+                Tags: [json_request_body.country],
                 Title: json.articles[i].title,
                 Link: json.articles[i].url,
                 Image: json.articles[i].urlToImage,
