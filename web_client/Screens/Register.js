@@ -19,7 +19,7 @@ function RandPic() {
     return img;
 }
 
-function LogUser(email, password) {
+function LogUser(email, password, navigation) {
   console.log("hello man")
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -35,7 +35,10 @@ function LogUser(email, password) {
 
   fetch("http:localhost:3000/api/auth/login", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => {
+      console.log(result)
+      navigation.navigate('Favorites');
+    })
     .catch(error => console.log('error', error));
 }
 
@@ -68,7 +71,7 @@ export function RegisterScreen({navigation}) {
             onChangeErrorMess(test.error.message)
           }
           if (test.message == 'User added successfully !')
-            LogUser(email, password)
+            LogUser(email, password, navigation)
         })
         .catch(error => {
           console.log('error', error)
