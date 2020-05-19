@@ -25,31 +25,63 @@ export function FavoritesScreen({route, navigation}) {
   const [Alert, onChangeAlert] = React.useState(false);
   const [ErrorMess, onChangeErrorMess] = React.useState('Error');
   const [TintColor1, onChangeTintColor1] = React.useState(false);
+  const [TintColor2, onChangeTintColor2] = React.useState(false);
+  const [TintColor3, onChangeTintColor3] = React.useState(false);
+  const [TintColor4, onChangeTintColor4] = React.useState(false);
+  const [TintColor5, onChangeTintColor5] = React.useState(false);
   const buttons = ['Hello', 'World', 'Buttons', 'zaezaezaezaeazezaez']
 
   return (
     <View style={styles.back}>
-      <View style={styles.button}>
-        <TouchableOpacity onPress={() => onChangeTintColor1(true)}>
-          <Image style={TintColor1 ? {width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '10vh', marginLeft: '10vw', tintColor: 'green'} : {width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '10vh', marginLeft: '10vw'}}
-            source={require('../ressources/science.png')}  />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('touchdr')}>
-          <Image style={{width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '-30vh', marginLeft: '40vw'}}
-            source={require('../ressources/epiflipboard.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('touchdr')}>
-          <Image style={{width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '-30vh', marginLeft: '70vw'}}
-            source={require('../ressources/epiflipboard.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('touchdr')}>
-          <Image style={{width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '10vh', marginLeft: '25vw'}}
-            source={require('../ressources/epiflipboard.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('touchdr')}>
-          <Image style={{width: '30vh', height: '30vh', resizeMode: 'contain', marginTop: '-30vh' ,marginLeft: '55vw'}}
-            source={require('../ressources/epiflipboard.png')} />
-        </TouchableOpacity>
+      <View style={styles.title}>
+        <Text style={{fontSize: 50}}> Chose tags to add to you favorites </Text>
+      </View>
+      <View style={styles.wrapper}>
+        <View style={styles.button}>
+          <TouchableOpacity onPress={() => onChangeTintColor1(!TintColor1)}>
+            <Image style={TintColor1 ? {width: '30vh', height: '25vh', resizeMode: 'contain', tintColor: 'green'} : {width: '30vh', height: '25vh', resizeMode: 'contain'}}
+              source={require('../ressources/science.png')}  />
+              <Text style={TintColor1 ? {marginLeft: '2vw', fontSize: 30, color: 'green'} :  {marginLeft: '2vw', fontSize: 30}}> Science </Text>
+          </TouchableOpacity>
+        </View>
+          <View style={styles.button}>
+            <TouchableOpacity onPress={() => onChangeTintColor2(!TintColor2)}>
+              <Image style={TintColor2 ? {width: '30vh', height: '25vh', resizeMode: 'contain', tintColor: 'green'} : {width: '30vh', height: '25vh', resizeMode: 'contain'}}
+                source={require('../ressources/culture.png')} />
+                <Text style={TintColor2 ? {marginLeft: '3.5vw', fontSize: 30, color: 'green'} :  {marginLeft: '3.5vw', fontSize: 30}}> Culture </Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.button}>
+          <TouchableOpacity onPress={() => onChangeTintColor3(!TintColor3)}>
+            <Image style={TintColor3 ? {width: '30vh', height: '25vh', resizeMode: 'contain', tintColor: 'green'} : {width: '30vh', height: '25vh', resizeMode: 'contain'}}
+              source={require('../ressources/political.png')} />
+              <Text style={TintColor3 ? {marginLeft: '4vw', fontSize: 30, color: 'green'} :  {marginLeft: '4vw', fontSize: 30}}> Politic </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.wrapper}>
+        <View style={styles.button2}>
+          <TouchableOpacity onPress={() => onChangeTintColor4(!TintColor4)}>
+            <Image style={TintColor4 ? {width: '30vh', height: '25vh', resizeMode: 'contain', tintColor: 'green'} : {width: '30vh', height: '25vh', resizeMode: 'contain'}}
+              source={require('../ressources/sport.png')} />
+              <Text style={TintColor4 ? {marginLeft: '4vw', fontSize: 30, color: 'green'} :  {marginLeft: '4vw', fontSize: 30}}> Sport </Text>
+          </TouchableOpacity>
+        </View>
+          <View style={styles.button3}>
+            <TouchableOpacity onPress={() => onChangeTintColor5(!TintColor5)}>
+              <Image style={TintColor5 ? {width: '30vh', height: '25vh', resizeMode: 'contain', tintColor: 'green'} : {width: '30vh', height: '25vh', resizeMode: 'contain'}}
+                source={require('../ressources/epiflipboard.png')} />
+                <Text style={TintColor5 ? {marginLeft: '4vw', fontSize: 30, color: 'green'} :  {marginLeft: '4vw', fontSize: 30}}> Wallah </Text>
+            </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.title}>
+        <Button
+          style={{width:'10vw', height: '5vh'}}
+          title="Confirm"
+          color="#515A5A"
+          onPress={() => console.log('oki')}
+        />
       </View>
     </View>
   )
@@ -64,18 +96,41 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       flex: 10
   },
-  button: {
-    flexDirection: 'column',
+  wrapper: {
+    flexDirection: 'row',
     flex: 10,
     width: '100%',
-    height: '100%',
+    height: '250%',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    marginTop: '5vh'
   },
-  checked: {
-    tintColor: 'red',
+  title: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    alignContent: 'center'
   },
-  unchecked: {
-    tintColor: 'black'
+  button:  {
+    flexDirection: 'column',
+    flex: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginLeft: '10vw'
+  },
+  button2:  {
+    flexDirection: 'column',
+    flex: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginLeft: '25vw'
+  },
+  button3:  {
+    flexDirection: 'column',
+    flex: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginLeft: '-5vw'
   }
 });

@@ -22,8 +22,8 @@ function CheckResult(res, navigation) {
   res = JSON.parse(res)
   if (!res.userId || !res.token)
     return;
-  navigation.navigate('Featured', {userId: res.userId, token: res.token});
-  //navigation.navigate('Favorites');
+  //navigation.navigate('Featured', {userId: res.userId, token: res.token});
+  navigation.navigate('Favorites');
 }
 
 export function LoginScreen({navigation}) {
@@ -47,7 +47,7 @@ export function LoginScreen({navigation}) {
         redirect: 'follow'
       };
 
-      fetch("http:localhost:3000/api/auth/login", requestOptions)
+      fetch("http://localhost:3000/api/auth/login", requestOptions)
         .then(response => response.text())
         .then(result => {
           var test = JSON.parse(result)
