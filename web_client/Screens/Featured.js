@@ -23,7 +23,7 @@ function ThreeByThree(list) {
   }
   if (j != 0)
     newList.push(tmpList)
-  console.log('newList: ', newList)
+  //console.log('newList: ', newList)
   return newList;
 }
 
@@ -59,13 +59,13 @@ export function FeaturedScreen({route, navigation}) {
 
     const test = route.params.userId;
     //const test = navigation.getParam('userName', 'NO-User');
-    console.log('userId: ', test)
+    //console.log('userId: ', test)
 
-    console.log("wallah: ", test2)
+    //console.log("wallah: ", test2)
     let newDecklist = Object.keys(test2).map((val) => { return { ...test2[val], ID: val }; });
-    for (var i = 0; i < newDecklist.length; i++) {
+    /*for (var i = 0; i < newDecklist.length; i++) {
       console.log(i, ' : ', newDecklist[i])
-    }
+    }*/
     var newList = ThreeByThree(newDecklist);
     return (
       <ScrollView style={styles.back}>

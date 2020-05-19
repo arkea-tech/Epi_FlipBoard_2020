@@ -14,9 +14,9 @@ class MyWebComponent extends Component {
 }
 
 
-export function WebV({navigation}) {
-  return (Platform.OS === 'web'?<iframe src='https://docs.expo.io/versions/latest/sdk/webview/' height={'100%'} width={'100%'}/>:<View style={{flex:1}}>:<WebView originWhitelist={['*']}
-      source={{ uri: 'https://docs.expo.io/versions/latest/sdk/webview/',baseUrl:'' }}
+export function WebV({route, navigation}) {
+  return (Platform.OS === 'web'?<iframe src={route.params.link} height={'100%'} width={'100%'}/>:<View style={{flex:1}}>:<WebView originWhitelist={['*']}
+      source={{ uri: route.params.link, baseUrl:'' }}
      style={{flex:1,height:2}}
      />
   </View>)

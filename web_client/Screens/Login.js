@@ -22,8 +22,8 @@ function CheckResult(res, navigation) {
   res = JSON.parse(res)
   if (!res.userId || !res.token)
     return;
-  //navigation.navigate('Featured', {userId: res.userId, token: res.token});
-  navigation.navigate('Favorites');
+  navigation.navigate('Featured', {userId: res.userId, token: res.token});
+  //navigation.navigate('Favorites');
 }
 
 export function LoginScreen({navigation}) {

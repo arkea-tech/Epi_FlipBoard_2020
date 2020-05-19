@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import {Button,Image, View, StyleSheet,Text,ScrollView,FlatList} from 'react-native';
 import { WebView } from 'react-native-webview';
 
-class MyWebComponent extends Component {
-  render() {
-    return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
-  }
-}
-
-function dispWeb() {
-  console.log('hey hello')
-  return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
-}
-
 function disTags(tags) {
   return (
     tags.map((item, key)=>(
@@ -56,13 +45,13 @@ export default class Arti extends Component {
               </Text>
             </View>
             <View style={styles.title}>
-              <Text style={{textAlign: 'left', fontSize: 25}} onPress={() => this.props.nav.navigate('WebV')}>
+              <Text style={{textAlign: 'left', fontSize: 25}} onPress={() => this.props.nav.navigate('WebV', {link: this.props.test.Link})}>
                 {this.props.test.Title}
               </Text>
             </View>
             <View style={styles.source}>
               <Text style={{textAlign: 'left', fontSize: 15}}>
-                {this.props.test.Source} - {this.props.test.Autor}
+                {this.props.test.Source} - {this.props.test.Author}
               </Text>
               <View style={styles.title}>
                 <Text style={{textAlign: 'left', fontSize: 25}}>
