@@ -67,7 +67,7 @@ Runs on:
 
 * `localhost:3000`.
 
-### mongodb
+### MongoDB
 
 Used as the database for the project and set-up locally with AWS.
 Datas are organized into collections with clean separation.
