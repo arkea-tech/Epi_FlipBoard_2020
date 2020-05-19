@@ -73,7 +73,7 @@ Authorization:
 
 | Value    | Type |
 |:------- | -------:|
-| authorization | Bearer Token |
+| Bearer Token | authorization |
 | token | string |
 
 
@@ -82,6 +82,7 @@ Authorization:
 ```json
 [
     {
+        "status": 200,
         "Id": 0,
         "Tags": "Sports",
         "Desc": "Tuesday’s vote will prevent teams from blocking assistant coaches and executives who plan to interview for new jobs. But team owners tabled a measure to upgrade the draft status of franchises that hire nonwhite candidates for leadership positions.",
@@ -106,15 +107,15 @@ Authorization:
 
 | Value    | Type |
 |:------- | -------:|
-| authorization | Bearer Token |
+| Bearer Token | authorization |
 | token | string |
-
 
 **Response Exemple**:
 
 ```json
 [
     {
+        "status": 200,
         "Id": 0,
         "Tags": "Science",
         "Desc": "The large reptiles make decoy nests to distract predators during an oft-ignored behavior following their egg laying, researchers say.",
@@ -139,7 +140,7 @@ Authorization:
 
 | Value    | Type |
 |:------- | -------:|
-| authorization | Bearer Token |
+| Bearer Token | authorization |
 | token | string |
 
 
@@ -148,6 +149,7 @@ Authorization:
 ```json
 [
     {
+       "status": 200,
        "Id": 0,
        "Tags": "Culture",
        "Desc": "How do you get discovered in a teetering art world? Graduating students organize shows with peers, team up with dealers — and lobby for relief funds. Will they bring change?",
@@ -157,6 +159,74 @@ Authorization:
        "Author": "By Hilarie M. Sheets",
        "Date": "19/5/2020",
        "Image": "https://static01.nyt.com/images/2020/05/20/arts/20artschool-virus1/20artschool-virus1-articleLarge.jpg"
+    },
+    "..."
+]
+```
+
+## `get travel articles`
+
+Method: `GET`
+URL: `localhost:3000/api/articles/travel`
+
+
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+**Response Exemple**:
+
+```json
+[
+    {
+        "status": 200,
+        "Id": 19,
+        "Tags": "Travel",
+        "Desc": "New polling shows 35% of Australians are now less likely to travel overseas, regardless of open borders. How will domestic travel fare?",
+        "Title": "Special deals and domestic travel: 'The world has shrunk, but not necessarily in a bad way'",
+        "Source": "theguardian.com",
+        "Link": "https://www.theguardian.com/travel/2020/may/17/special-deals-and-domestic-travel-the-world-has-shrunk-but-not-necessarily-in-a-bad-way",
+        "Author": "Celina Ribeiro",
+        "Date": "16/5/2020",
+        "Image": "https://media.guim.co.uk/e1c1fa29a972a2c7329e90bef750c677dcd8d398/0_0_4898_2940/500.jpg"
+    },
+    "..."
+]
+```
+
+## `get business articles`
+
+Method: `GET`
+URL: `localhost:3000/api/articles/business`
+
+
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+**Response Exemple**:
+
+```json
+[
+    {
+        "status": 200,
+        "Id": 19,
+        "Tags": "Business",
+        "Desc": "Government sets out plan to cut tariffs, with farming and car industry to be protected",
+        "Title": "UK businesses urge PM to seal post-Brexit EU free trade deal",
+        "Source": "The Guardian",
+        "Link": "https://www.theguardian.com/business/2020/may/19/uk-farming-car-industry-brexit-trade-cut-tariffs-import-duties",
+        "Author": "Larry Elliott",
+        "Date": "19/5/2020",
+        "Image": "https://media.guim.co.uk/4c31a29c676db99640699d96cdbfaa1f94c9b84d/0_54_3500_2101/500.jpg"
     },
     "..."
 ]
