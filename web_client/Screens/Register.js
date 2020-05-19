@@ -62,7 +62,7 @@ export function RegisterScreen({navigation}) {
         redirect: 'follow'
       };
 
-      fetch("http:localhost:3000/api/auth/signup", requestOptions)
+      fetch("http://localhost:3000/api/auth/signup", requestOptions)
         .then(response => response.text())
         .then(result => {
           var test = JSON.parse(result)
@@ -132,6 +132,32 @@ export function RegisterScreen({navigation}) {
                 Already have an account ?
               </Text>
             </View>
+          </View>
+          <View style={styles.container}>
+            <Button mode="contained" onPress={() => navigation.navigate('Spotlight')}
+                title= "Explore Spotlight"
+                style={styles.buttoncontainer}
+            />
+            <Button mode="contained" onPress={() => navigation.navigate('Featured')}
+                title= "Featured"
+                style={styles.buttoncontainer}
+            />
+            <Button mode="contained" onPress={() => navigation.push('News')}
+                title= "News"
+                style={styles.buttoncontainer}
+            />
+            <Button mode="contained" onPress={() => navigation.navigate('Business')}
+                title= "Business"
+                style={styles.buttoncontainer}
+            />
+            <Button mode="contained" onPress={() => navigation.navigate('Tech')}
+                title= "Tech and science"
+                style={styles.buttoncontainer}
+            />
+            <Button mode="contained" onPress={() => navigation.navigate('Sport')}
+                title= "Sport"
+                style={styles.buttoncontainer}
+            />
           </View>
 
           <AwesomeAlert

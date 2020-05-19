@@ -31,12 +31,36 @@ export function FeaturedScreen({route, navigation}) {
 
     const [valueTest, onChangeTest] = React.useState('');
     const [UserId, onChangeUserID] = React.useState('');
+    const [test2, onChangeTest2] = React.useState(jsonTest.articles)
+
+    React.useEffect(() => {
+        callApi()
+    })
+
+    function callApi() {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({"country":"fr"});
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+
+        fetch("http://localhost:3000/api/stuff/news-ct", requestOptions)
+          .then(response => response.text())
+          .then(result => JSON.parse(result))
+          .then(resultParse => onChangeTest2(resultParse))
+          .catch(error => console.log('error', error))
+    }
 
     const test = route.params.userId;
     //const test = navigation.getParam('userName', 'NO-User');
     console.log('userId: ', test)
 
-    var test2 = jsonTest.articles;
     console.log("wallah: ", test2)
     let newDecklist = Object.keys(test2).map((val) => { return { ...test2[val], ID: val }; });
     for (var i = 0; i < newDecklist.length; i++) {

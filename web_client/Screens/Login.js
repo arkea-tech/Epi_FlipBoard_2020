@@ -50,6 +50,7 @@ export function LoginScreen({navigation}) {
       fetch("http://localhost:3000/api/auth/login", requestOptions)
         .then(response => response.text())
         .then(result => {
+            console.log(result)
           var test = JSON.parse(result)
           CheckResult(result, navigation)
           if (test.error) {
