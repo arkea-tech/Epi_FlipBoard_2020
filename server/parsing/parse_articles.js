@@ -1,7 +1,7 @@
 function parseNytDatas(articles, new_york_times, id, tag)
 {
     const docs = new_york_times.data.response.docs;
-    var articleDate;
+    var docDate;
 
     for (const doc of docs) {
         docDate = new Date(doc.pub_date);
@@ -24,13 +24,13 @@ function parseNytDatas(articles, new_york_times, id, tag)
 function parseGuardianDatas(articles, the_guardian, id, tag)
 {
     const docs = the_guardian.data.response.results;
-    var articleDate;
+    var docDate;
 
     for (const doc of docs) {
         docDate = new Date(doc.fields.lastModified);
         articles.push({
             Id: id,
-            Tags: tag,
+            Tags: tag === "popular" ? doc.sectionName : tag,
             Desc: doc.fields.trailText,
             Title: doc.fields.headline,
             Source: doc.fields.publication,
@@ -42,6 +42,30 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
         id++;
     }
 }
+//doc.media[0].media-metadata[2].url
+function parseNytPopularDatas(articles, new_york_times, id)
+{
+    const docs = new_york_times.data.results;
+    var docDate;
+    var media;
+
+    for (const doc of docs) {
+        docDate = new Date(doc.published_date);
+        articles.push({
+            Id: id,
+            Tags: doc.section,
+            Desc: doc.abstract,
+            Title: doc.title,
+            Source: doc.source,
+            Link: doc.url,
+            Author: doc.byline,
+            Date: `${docDate.getDate()}/${docDate.getMonth() + 1}/${docDate.getFullYear()}`,
+            Image: ""
+        });
+        id++;
+    }
+    return id;
+}
 
 function jsUcFirst(string)
 {
@@ -51,5 +75,6 @@ function jsUcFirst(string)
 module.exports = {
     parseGuardianDatas: parseGuardianDatas,
     parseNytDatas: parseNytDatas,
-    jsUcFirst: jsUcFirst
+    jsUcFirst: jsUcFirst,
+    parseNytPopularDatas: parseNytPopularDatas
 }
