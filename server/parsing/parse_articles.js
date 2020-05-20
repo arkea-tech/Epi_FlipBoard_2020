@@ -42,11 +42,12 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
         id++;
     }
 }
-
+//doc.media[0].media-metadata[2].url
 function parseNytPopularDatas(articles, new_york_times, id)
 {
     const docs = new_york_times.data.results;
     var docDate;
+    var media;
 
     for (const doc of docs) {
         docDate = new Date(doc.published_date);
@@ -59,7 +60,7 @@ function parseNytPopularDatas(articles, new_york_times, id)
             Link: doc.url,
             Author: doc.byline,
             Date: `${docDate.getDate()}/${docDate.getMonth() + 1}/${docDate.getFullYear()}`,
-            Image: doc.media[0].media-metadata[2].url
+            Image: ""
         });
         id++;
     }
@@ -74,5 +75,6 @@ function jsUcFirst(string)
 module.exports = {
     parseGuardianDatas: parseGuardianDatas,
     parseNytDatas: parseNytDatas,
-    jsUcFirst: jsUcFirst
+    jsUcFirst: jsUcFirst,
+    parseNytPopularDatas: parseNytPopularDatas
 }
