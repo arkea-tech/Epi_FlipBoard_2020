@@ -1,5 +1,5 @@
 var axios = require('axios');
-//let parseArticles = require('../parsing/parse_articles');
+let parseArticles = require('../parsing/parse_articles');
 
 exports.getArticles = (req, res, next) => {
     let articles = [];
@@ -10,9 +10,9 @@ exports.getArticles = (req, res, next) => {
         axios.get(`https://content.guardianapis.com/search?api-key=0dbaf7e0-8c75-4864-82ed-34fc14798075&show-fields=thumbnail,headline,trailText,publication,byline,lastModified&order-by=relevance`)
     ]).then(
         axios.spread((new_york_times, the_guardian) => {
-            // id = parseArticles.parseNytDatas(articles, new_york_times, id, `${section.new_york_times}`);
-            // parseArticles.parseGuardianDatas(articles, the_guardian, id, `${section.new_york_times}`);
-            // res.status(200).json(articles);
+            id = parseArticles.parseNytPopularDatas(articles, new_york_times, id);
+            parseArticles.parseGuardianDatas(articles, the_guardian, id, "popular");
+            res.status(200).json(articles);
         })
     ).catch(
         (error) => {
