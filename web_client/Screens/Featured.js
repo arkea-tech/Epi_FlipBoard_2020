@@ -32,16 +32,38 @@ export function FeaturedScreen({route, navigation}) {
     const [valueTest, onChangeTest] = React.useState('');
     const [UserId, onChangeUserID] = React.useState('');
     const [test2, onChangeTest2] = React.useState(jsonTest.articles)
+    const [Body, onChangeBody] = React.useState(JSON.stringify({"country":"fr", "word":"sport"}));
+    const [Url, onChangeUrl] = React.useState('news-ct');
 
     React.useEffect(() => {
         callApi()
     })
 
+    function handler(vari) {
+        console.log('testing:', vari)
+        if (vari == 'featured') {
+          onChangeBody(JSON.stringify({"country":"fr"}))
+          onChangeUrl('news-ct')
+        }
+        if (vari == 'sport') {
+          onChangeBody(JSON.stringify({"country":"fr", "word":"sport"}))
+          onChangeUrl('news-q')
+        }
+        if (vari == 'business') {
+          onChangeBody(JSON.stringify({"country":"fr", "word":"business"}))
+          onChangeUrl('news-q')
+        }
+        if (vari == 'world') {
+          onChangeBody(JSON.stringify({"country":"fr", "word":"world"}))
+          onChangeUrl('news-q')
+        }
+    }
+
     function callApi() {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({"country":"fr"});
+        var raw = Body;
 
         var requestOptions = {
           method: 'POST',
@@ -50,7 +72,7 @@ export function FeaturedScreen({route, navigation}) {
           redirect: 'follow'
         };
 
-        fetch("http://localhost:3000/api/stuff/news-ct", requestOptions)
+        fetch("http://localhost:3000/api/stuff/" + Url, requestOptions)
           .then(response => response.text())
           .then(result => JSON.parse(result))
           .then(resultParse => onChangeTest2(resultParse))
@@ -70,7 +92,7 @@ export function FeaturedScreen({route, navigation}) {
     return (
       <ScrollView style={styles.back}>
         <View style={styles.container}>
-          <NavBar nav={navigation}/>
+          <NavBar nav={navigation} action={handler}/>
         </View>
         <FlatList
           data={newList}

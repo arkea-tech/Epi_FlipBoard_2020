@@ -6,21 +6,21 @@ export default class NavBar extends Component {
       return (
         <View style={styles.container}>
           <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('Spotlight')}>
-            <Text style={{ fontSize: 20 }}>Explore Spotlight</Text>
+            <Text style={{ fontSize: 20 }}>Favorites</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('Featured')}>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.action('featured')}>
             <Text style={{ fontSize: 20 }}>Featured</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('News')}>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.action('world')}>
             <Text style={{ fontSize: 20 }}>News</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('Business')}>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.action('business')}>
             <Text style={{ fontSize: 20 }}>Business</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('Tech')}>
+          <TouchableOpacity style={styles.button} onPress={() => this.props.action('tech')}>
             <Text style={{ fontSize: 20 }}>Tech and science</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => this.props.nav.navigate('Sport')}>
+          <TouchableOpacity style={styles.button}onPress={() => this.props.action('sport')}>
             <Text style={{ fontSize: 20 }}>Sport</Text>
           </TouchableOpacity>
         </View>

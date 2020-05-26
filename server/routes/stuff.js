@@ -45,7 +45,7 @@ router.post('/news-q', (req, res) => {
         for (var i = 0; i < len; i++) {
             arr.push({
                 id: i + 1,
-                Tags: word,
+                Tags: [word],
                 Title: json.articles[i].title,
                 Link: json.articles[i].url,
                 Image: json.articles[i].urlToImage,
