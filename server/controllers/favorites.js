@@ -30,5 +30,21 @@ exports.addArticle = (req, res, next) => {
 }
 
 exports.addTag = (req, res, next) => {
-    const tag
+    const tag = new Tag({
+        Tag: req.body.tag
+    });
+
+    tag.save().then(
+        () => {
+            res.status(201).json({
+                message: 'Tag saved successfully !'
+            });
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
+                error: error
+            });
+        }
+    );
 }

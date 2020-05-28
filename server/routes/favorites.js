@@ -5,6 +5,6 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/article', auth, favoritesCtrl.addArticle);
-router.get('/tag/:id', auth, articlesCtrl.addTag);
+router.get('/tag', auth, articlesCtrl.addTag);
 
 module.exports = router;
