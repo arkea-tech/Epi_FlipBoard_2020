@@ -4,4 +4,4 @@ const serviceSchema = mongoose.Schema({
     Tag: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Tags', serviceSchema);
+module.exports = mongoose.model('Tag', serviceSchema);

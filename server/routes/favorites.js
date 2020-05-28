@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.post('/article', auth, favoritesCtrl.addArticles);
-//router.get('/:section', auth, articlesCtrl.getArticles);
+router.post('/article', auth, favoritesCtrl.addArticle);
+router.get('/tag/:id', auth, articlesCtrl.addTag);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const Article = require('../models/article');
-const Tags = require('../models/tags')
+const Tag = require('../models/tag')
 
-exports.addArticles = (req, res, next) => {
+exports.addArticle = (req, res, next) => {
     const article = new Article({
         Id: req.body.Id,
         Tag: req.body.Tag,
@@ -29,6 +29,6 @@ exports.addArticles = (req, res, next) => {
     );
 }
 
-// exports.addCultureArticle = (req, res, next) => {
-//     const culture =
-// }
+exports.addTag = (req, res, next) => {
+    const tag
+}
