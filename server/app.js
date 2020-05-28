@@ -6,6 +6,7 @@ const path = require('path');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 const articlesRoutes = require('./routes/articles');
+const favoritesRoutes = require('./routes/favorites');
 
 const app = express();
 
@@ -34,5 +35,6 @@ app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
 
 app.use('/api/articles', articlesRoutes);
+app.use('/api/favorites', favoritesRoutes);
 
 module.exports = app;
