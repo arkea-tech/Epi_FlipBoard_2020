@@ -12,4 +12,4 @@ const serviceSchema = mongoose.Schema({
     Date: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Articles', serviceSchema);
+module.exports = mongoose.model('Article', serviceSchema);
