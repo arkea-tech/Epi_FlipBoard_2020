@@ -1,6 +1,7 @@
 const Article = require('../models/article');
+const Tags = require('../models/tags')
 
-exports.addFavoriteArticles = (req, res, next) => {
+exports.addArticles = (req, res, next) => {
     const article = new Article({
         Id: req.body.Id,
         Tag: req.body.Tag,
@@ -27,3 +28,7 @@ exports.addFavoriteArticles = (req, res, next) => {
         }
     );
 }
+
+// exports.addCultureArticle = (req, res, next) => {
+//     const culture =
+// }
