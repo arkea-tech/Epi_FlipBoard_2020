@@ -1,5 +1,5 @@
 const Article = require('../models/article');
-const Tag = require('../models/tag')
+const Tag = require('../models/tag');
 
 exports.addArticle = (req, res, next) => {
     const article = new Article({
@@ -39,6 +39,20 @@ exports.addTag = (req, res, next) => {
             res.status(201).json({
                 message: 'Tag saved successfully !'
             });
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
+                error: error
+            });
+        }
+    );
+}
+
+exports.getTags = (req, res, next) => {
+    Tag.find().then(
+        (tags) => {
+            res.status(200).json(tags);
         }
     ).catch(
         (error) => {

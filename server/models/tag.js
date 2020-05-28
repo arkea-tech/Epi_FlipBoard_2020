@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-const serviceSchema = mongoose.Schema({
+const tagSchema = mongoose.Schema({
+    Id: { type: Number, required: true },
     Tag: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Tag', serviceSchema);
+module.exports = mongoose.model('Tag', tagSchema);

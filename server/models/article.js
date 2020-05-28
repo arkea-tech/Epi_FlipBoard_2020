@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const serviceSchema = mongoose.Schema({
+const articleSchema = mongoose.Schema({
     Id: { type: Number, required: true },
     Tag: { type: String, required: true },
     Title: { type: String, required: true },
@@ -12,4 +12,4 @@ const serviceSchema = mongoose.Schema({
     Date: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Article', serviceSchema);
+module.exports = mongoose.model('Article', articleSchema);
