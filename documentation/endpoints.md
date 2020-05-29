@@ -289,6 +289,7 @@ Authorization:
 
 Method: `POST`
 URL: `localhost:3000/api/favorite/article`
+<<<<<<< HEAD
 
 Authorization:
 
@@ -352,21 +353,32 @@ Authorization:
 | token | string |
 
 
+=======
+>>>>>>> master
 Parameters:
 
 
 | Value    | Type |
 |:------- | -------:|
 | Id | Number |
+<<<<<<< HEAD
 | Tag | String |
+=======
+| Tag | Title |
+>>>>>>> master
 
 
 Body example:
 
 ```json
 {
+<<<<<<< HEAD
     "Id": 20,
     "Tag": "business"
+=======
+	"email": "bryan.molly@deep.com",
+	"password": "test123"
+>>>>>>> master
 }
 ```
 
@@ -375,6 +387,7 @@ Body example:
 ```json
 {
     "status": 201,
+<<<<<<< HEAD
     "msg": "Tag saved successfully !"
 }
 ```
@@ -514,3 +527,8 @@ Authorization:
     "..."
 ]
 ```
+=======
+    "msg": "User added successfully !"
+}
+```
+>>>>>>> master
