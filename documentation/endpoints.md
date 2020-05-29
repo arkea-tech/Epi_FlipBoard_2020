@@ -231,3 +231,87 @@ Authorization:
     "..."
 ]
 ```
+
+# Feed
+
+## `get popular articles`
+
+Method: `GET`
+URL: `localhost:3000/api/articles/popular`
+
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+**Response Exemple**:
+
+```json
+[
+    {
+        "Id": 0,
+        "Tags": [
+            "world",
+            "US"
+        ],
+        "Desc": "Doctors fear a lockdown that began two months ago is being eased too soon. In Indonesia, the caseload has doubled since early May to nearly 25,000.",
+        "Title": "Caseloads Soar Amid Reopenings in India and Beyond: Live Coverage",
+        "Source": "New York Times",
+        "Link": "https://www.nytimes.com/2020/05/29/world/coronavirus-news.html",
+        "Author": "John Prime",
+        "Date": "29/5/2020",
+        "Image": "https://static01.nyt.com/images/2020/05/29/world/29virus-int-briefing-india/29virus-int-briefing-india-thumbLarge.jpg"
+    },
+    {
+        "Id": 2,
+        "Tags": [
+            "Global development",
+            "US"
+        ],
+        "Desc": "A high school student was convicted on the grounds that failing to seek antenatal care amounted to murder, after giving birth in a bathroom in 2016",
+        "Title": "El Salvador teen rape victim sentenced to 30 years in prison after stillbirth",
+        "Source": "theguardian.com",
+        "Link": "https://www.theguardian.com/global-development/2017/jul/06/el-salvador-teen-rape-victim-sentenced-30-years-prison-stillbirth",
+        "Author": "Nina Lakhani",
+        "Date": "4/3/2019",
+        "Image": "https://media.guim.co.uk/b171ce504b5e299ab806046cf98e4db59460f473/0_0_5568_3341/500.jpg"
+    }
+    "..."
+]
+```
+
+# Favorite (Link To MongoDB)
+
+## `Add Article`
+
+Method: `POST`
+URL: `localhost:3000/api/favorite/article`
+Parameters:
+
+
+| Value    | Type |
+|:------- | -------:|
+| Id | Number |
+| Tag | Title |
+
+
+Body example:
+
+```json
+{
+	"email": "bryan.molly@deep.com",
+	"password": "test123"
+}
+```
+
+**Response Exemple**:
+
+```json
+{
+    "status": 201,
+    "msg": "User added successfully !"
+}
+```
