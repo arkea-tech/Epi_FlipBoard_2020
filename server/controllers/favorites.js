@@ -5,7 +5,7 @@ const Tag = require('../models/tag');
 
 exports.addArticle = (req, res, next) => {
     const article = new Article({
-        Id: req.body.Id,
+        id: req.body.id,
         Tags: req.body.Tag,
         Title: req.body.Title,
         Link: req.body.Link,
@@ -33,7 +33,7 @@ exports.addArticle = (req, res, next) => {
 
 exports.addTag = (req, res, next) => {
     const tag = new Tag({
-        Id: req.body.Id,
+        id: req.body.id,
         Tag: req.body.Tag
     });
 

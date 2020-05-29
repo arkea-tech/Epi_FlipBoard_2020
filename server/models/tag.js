@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const tagSchema = mongoose.Schema({
-    Id: { type: Number, required: true },
+    id: { type: Number, required: true },
     Tag: { type: Array, required: true }
 });
 

@@ -289,21 +289,44 @@ Authorization:
 
 Method: `POST`
 URL: `localhost:3000/api/favorite/article`
+
+Authorization:
+
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
 Parameters:
 
 
 | Value    | Type |
 |:------- | -------:|
 | Id | Number |
-| Tag | Title |
+| Tag | String |
+| Link | String |
+| Image | String |
+| Desc | String |
+| Source | String |
+| Author | String |
+| Date | String |
 
 
 Body example:
 
 ```json
 {
-	"email": "bryan.molly@deep.com",
-	"password": "test123"
+	"Id": 9,
+	"Tag": ["technology", "test"],
+	"Title": "beautiful tech",
+	"Link": "http://at.com",
+	"Image": "http://zaeaz",
+	"Desc": "Tech Discovery",
+	"Source": "New York Times",
+	"Author": "Steve Kane",
+	"Date": "01/02/2020"
 }
 ```
 
@@ -312,6 +335,182 @@ Body example:
 ```json
 {
     "status": 201,
-    "msg": "User added successfully !"
+    "msg": "Article saved successfully !"
 }
+```
+
+## `Add Tag`
+
+Method: `POST`
+URL: `localhost:3000/api/favorites/tag`
+Authorization:
+
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+Parameters:
+
+
+| Value    | Type |
+|:------- | -------:|
+| Id | Number |
+| Tag | String |
+
+
+Body example:
+
+```json
+{
+    "Id": 20,
+    "Tag": "business"
+}
+```
+
+**Response Exemple**:
+
+```json
+{
+    "status": 201,
+    "msg": "Tag saved successfully !"
+}
+```
+
+
+## `Delete Article`
+
+Method: `DELETE`
+URL: `localhost:3000/api/favorites/article/:id`
+Note: __":id" correspond to the "Id" of a single JSON Article__
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+**Response Exemple**:
+
+```json
+{
+    "status": 200,
+    "msg": "Article Deleted !"
+}
+```
+
+
+## `Delete Tag`
+
+Method: `DELETE`
+URL: `localhost:3000/api/favorites/tag/:id`
+Note: __":id" correspond to the "Id" of a single JSON Tag__
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+**Response Exemple**:
+
+```json
+{
+    "status": 200,
+    "msg": "Tag Deleted !"
+}
+```
+
+
+## `Fetch Tags`
+
+Method: `GET`
+URL: `localhost:3000/api/favorites/tags`
+Note: __This request return all the available tags as well as all articles associated with a tag.__
+
+
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+**Response Exemple**:
+
+```json
+{
+    "Tags": [
+        {
+            "_id": "5ecfe794bb24e4e3b2abab95",
+            "Id": 1,
+            "Tag": "science",
+            "__v": 0
+        },
+        {
+            "_id": "5ecfe7c1b1b932e3c904819e",
+            "Id": 2,
+            "Tag": "culture",
+            "__v": 0
+        },
+        {
+            "_id": "5ed0013c390c2cf011f40307",
+            "Id": 20,
+            "Tag": "business",
+            "__v": 0
+        }
+    ],
+    "Articles": [
+        {
+            "Id": 0,
+            "Tags": "Business",
+            "Desc": "Facebook should be making its policy choices in fair and transparent ways. But is it?",
+            "Title": "Facebook and Its Secret Policies",
+            "Source": "The New York Times",
+            "Link": "https://www.nytimes.com/2020/05/28/technology/facebook-polarization.html",
+            "Author": "By Shira Ovide",
+            "Date": "28/5/2020",
+            "Image": "https://static01.nyt.com/images/2020/05/28/business/28ontech/28ontech-articleLarge.gif"
+        },
+        "..."
+    ]
+}
+```
+
+## `Fetch Articles`
+
+Method: `GET`
+URL: `localhost:3000/api/favorites/articles`
+
+
+Authorization:
+
+| Value    | Type |
+|:------- | -------:|
+| Bearer Token | authorization |
+| token | string |
+
+
+**Response Exemple**:
+
+```json
+[
+    {
+        "_id": "5ecfe3e8ccf9f0e219514d84",
+        "Id": 5,
+        "Tag": "culture",
+        "Title": "beautiful discovery",
+        "Link": "http://at.com",
+        "Image": "http://zaeaz",
+        "Desc": "Space Discovery",
+        "Source": "New York Times",
+        "Author": "Steve Kane",
+        "Date": "01/02/2020",
+        "__v": 0
+    },
+    "..."
+]
 ```

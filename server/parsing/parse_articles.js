@@ -6,7 +6,7 @@ function parseNytDatas(articles, new_york_times, id, tag)
     for (const doc of docs) {
         docDate = new Date(doc.pub_date);
         articles.push({
-            Id: id,
+            id: id,
             Tags: [tag, "US"],
             Desc: doc.abstract,
             Title: doc.headline.main,
@@ -29,7 +29,7 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
     for (const doc of docs) {
         docDate = new Date(doc.fields.lastModified);
         articles.push({
-            Id: id,
+            id: id,
             Tags: tag === "popular" ? [doc.sectionName, "US"] : [tag, "US"],
             Desc: doc.fields.trailText,
             Title: doc.fields.headline,
@@ -52,7 +52,7 @@ function parseNytPopularDatas(articles, new_york_times, id)
     for (const doc of docs) {
         docDate = new Date(doc.published_date);
         articles.push({
-            Id: id,
+            id: id,
             Tags: [doc.section, "US"],
             Desc: doc.abstract,
             Title: doc.title,
