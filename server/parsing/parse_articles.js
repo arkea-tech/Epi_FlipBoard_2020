@@ -7,7 +7,7 @@ function parseNytDatas(articles, new_york_times, id, tag)
         docDate = new Date(doc.pub_date);
         articles.push({
             Id: id,
-            Tags: tag,
+            Tags: [tag, "US"],
             Desc: doc.abstract,
             Title: doc.headline.main,
             Source: doc.source,
@@ -30,7 +30,7 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
         docDate = new Date(doc.fields.lastModified);
         articles.push({
             Id: id,
-            Tags: tag === "popular" ? doc.sectionName : tag,
+            Tags: tag === "popular" ? [doc.sectionName, "US"] : [tag, "US"],
             Desc: doc.fields.trailText,
             Title: doc.fields.headline,
             Source: doc.fields.publication,
@@ -42,7 +42,7 @@ function parseGuardianDatas(articles, the_guardian, id, tag)
         id++;
     }
 }
-//doc.media[0].media-metadata[2].url
+
 function parseNytPopularDatas(articles, new_york_times, id)
 {
     const docs = new_york_times.data.results;
@@ -53,14 +53,14 @@ function parseNytPopularDatas(articles, new_york_times, id)
         docDate = new Date(doc.published_date);
         articles.push({
             Id: id,
-            Tags: doc.section,
+            Tags: [doc.section, "US"],
             Desc: doc.abstract,
             Title: doc.title,
-            Source: doc.source,
+            Source: "New York Times",
             Link: doc.url,
-            Author: doc.byline,
+            Author: doc.byline == "" ? "John Prime" : doc.byline,
             Date: `${docDate.getDate()}/${docDate.getMonth() + 1}/${docDate.getFullYear()}`,
-            Image: ""
+            Image: doc.multimedia[2].url
         });
         id++;
     }
